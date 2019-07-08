@@ -1,5 +1,5 @@
 <?php
-namespace VaahCms\Modules\Blog\Database\Seeds;
+namespace VaahCms\Themes\BtFourPointThree\Database\Seeds;
 
 
 use Illuminate\Database\Seeder;
@@ -13,23 +13,88 @@ class DatabaseTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->locations();
+        $this->blocks();
+        $this->templates();
+    }
 
-        $this->seedBlogs();
+    /**
+ * Run the database seeds.
+ *
+ * @return void
+ */
+    function locations()
+    {
+
+
+
+        $theme = \DB::table( 'vh_themes' )
+            ->where( 'slug', 'btfourpointthree' )
+            ->first();
+
+        if(!$theme)
+        {
+            return false;
+        }
+
+        $list = [
+            [
+                'type' => 'menu',
+                'name' => 'Top Menu',
+            ],
+            [
+                'type' => 'menu',
+                'name' => 'Footer Menu',
+            ],
+        ];
+
+
+        foreach($list as $item)
+        {
+            $item['slug'] = str_slug($item['name']);
+
+            $exist = \DB::table( 'vh_theme_locations' )
+                ->where( 'vh_theme_id', $theme->id )
+                ->where( 'slug', $item['slug'] )
+                ->first();
+
+            if (!$exist){
+
+                $item['vh_theme_id'] = $theme->id;
+
+
+                \DB::table( 'vh_theme_locations' )->insert( $item );
+            }
+        }
 
     }
+
 
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    function seedBlogs()
+    function blocks()
     {
+
+
+
+        $theme = \DB::table( 'vh_themes' )
+            ->where( 'slug', 'btfourpointthree' )
+            ->first();
+
+        if(!$theme)
+        {
+            return false;
+        }
+
         $list = [
             [
-                'title' => 'This is a sample blog',
-                'slug' => 'slug',
-                'details' => 'details',
+                'name' => 'Features',
+            ],
+            [
+                'name' => 'Sign In Features',
 
             ],
         ];
@@ -37,16 +102,70 @@ class DatabaseTableSeeder extends Seeder
 
         foreach($list as $item)
         {
-            $exist = \DB::table( 'vh_blog_posts' )
+            $item['slug'] = str_slug($item['name']);
+            $exist = \DB::table( 'vh_theme_blocks' )
+                ->where( 'vh_theme_id', $theme->id )
                 ->where( 'slug', $item['slug'] )
                 ->first();
 
             if (!$exist){
-                \DB::table( 'vh_blog_posts' )->insert( $item );
+
+                $item['vh_theme_id'] = $theme->id;
+
+                \DB::table( 'vh_theme_blocks' )->insert( $item );
             }
         }
 
     }
 
+
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    function templates()
+    {
+
+
+
+        $theme = \DB::table( 'vh_themes' )
+            ->where( 'slug', 'btfourpointthree' )
+            ->first();
+
+        if(!$theme)
+        {
+            return false;
+        }
+
+        $list = [
+            [
+                'type' => 'page',
+                'name' => 'Default',
+            ],
+            [
+                'type' => 'page',
+                'name' => 'Home',
+            ],
+        ];
+
+
+        foreach($list as $item)
+        {
+            $item['slug'] = str_slug($item['name']);
+            $exist = \DB::table( 'vh_theme_templates' )
+                ->where( 'vh_theme_id', $theme->id )
+                ->where( 'slug', $item['slug'] )
+                ->first();
+
+            if (!$exist){
+
+                $item['vh_theme_id'] = $theme->id;
+
+                \DB::table( 'vh_theme_templates' )->insert( $item );
+            }
+        }
+
+    }
 
 }

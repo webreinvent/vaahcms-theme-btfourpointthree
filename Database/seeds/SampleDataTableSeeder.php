@@ -1,5 +1,5 @@
 <?php
-namespace VaahCms\Modules\Blog\Database\Seeds;
+namespace VaahCms\Themes\BtFourPointThree\Database\Seeds;
 
 
 use Illuminate\Database\Seeder;
@@ -14,7 +14,7 @@ class SampleDataTableSeeder extends Seeder
     public function run()
     {
 
-        $this->seedBlogs();
+        $this->seedPosts();
 
     }
 
@@ -23,26 +23,28 @@ class SampleDataTableSeeder extends Seeder
      *
      * @return void
      */
-    function seedBlogs()
+    function seedPosts()
     {
         $list = [
             [
-                'title' => 'Sample Data',
-                'slug' => 'sample-data',
-                'details' => 'Sample Data',
+                'name' => 'Theme Sample Page',
+                'title' => 'Theme sample page',
+                'slug' => 'theme-sample-page',
+                'content' => 'Theme Sample Content',
+                'status' => 'draft',
+                'published_at' => null,
 
             ],
         ];
 
-
         foreach($list as $item)
         {
-            $exist = \DB::table( 'vh_blog_posts' )
+            $exist = \DB::table( 'vh_cms_pages' )
                 ->where( 'slug', $item['slug'] )
                 ->first();
 
             if (!$exist){
-                \DB::table( 'vh_blog_posts' )->insert( $item );
+                \DB::table( 'vh_cms_pages' )->insert( $item );
             }
         }
 
