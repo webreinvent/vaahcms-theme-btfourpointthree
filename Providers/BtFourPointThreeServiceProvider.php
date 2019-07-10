@@ -21,10 +21,26 @@ class BtFourPointThreeServiceProvider extends ServiceProvider
     {
         $this->registerTranslations();
         $this->registerConfig();
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->registerSeeders();
         $this->registerAssets();
         $this->registerViews();
 
     }
+
+
+    /**
+     *
+     */
+    private function registerSeeders() {
+
+        //load all the helpers
+        foreach (glob(__DIR__.'/../Database/Seeds/*.php') as $filename){
+            require_once($filename);
+        }
+
+    }
+
 
     /**
      * Register config.
