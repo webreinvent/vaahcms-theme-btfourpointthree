@@ -3,6 +3,7 @@ namespace VaahCms\Themes\BtFourPointThree\Database\Seeds;
 
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseTableSeeder extends Seeder
 {
@@ -51,7 +52,7 @@ class DatabaseTableSeeder extends Seeder
 
         foreach($list as $item)
         {
-            $item['slug'] = str_slug($item['name']);
+            $item['slug'] = Str::slug($item['name']);
 
             $exist = \DB::table( 'vh_theme_locations' )
                 ->where( 'vh_theme_id', $theme->id )
@@ -102,7 +103,7 @@ class DatabaseTableSeeder extends Seeder
 
         foreach($list as $item)
         {
-            $item['slug'] = str_slug($item['name']);
+            $item['slug'] = Str::slug($item['name']);
             $exist = \DB::table( 'vh_theme_blocks' )
                 ->where( 'vh_theme_id', $theme->id )
                 ->where( 'slug', $item['slug'] )
@@ -152,7 +153,7 @@ class DatabaseTableSeeder extends Seeder
 
         foreach($list as $item)
         {
-            $item['slug'] = str_slug($item['name']);
+            $item['slug'] = Str::slug($item['name']);
             $exist = \DB::table( 'vh_theme_templates' )
                 ->where( 'vh_theme_id', $theme->id )
                 ->where( 'slug', $item['slug'] )
