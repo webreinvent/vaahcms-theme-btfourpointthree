@@ -4,7 +4,7 @@ namespace VaahCms\Themes\BtFourPointThree\Providers;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use VaahCms\Modules\Cms\Providers\RouteServiceProvider;
+
 
 class BtFourPointThreeServiceProvider extends ServiceProvider
 {
@@ -96,15 +96,13 @@ class BtFourPointThreeServiceProvider extends ServiceProvider
      */
     public function registerAssets()
     {
-        $viewPath = resource_path('/views/vaahcms/themes/btfourpointthree');
-
         $sourcePath = __DIR__.'/../Resources/assets';
 
-        $this->publishes([$sourcePath => $viewPath],'assets');
+        $desPath = public_path('vaahcms/themes/btfourpointthree/assets');
 
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/views/vaahcms/themes/btfourpointthree';
-        }, \Config::get('view.paths')), [$sourcePath]), 'btfourpointthree');
+        $this->publishes([
+            $sourcePath => $desPath
+        ],'assets');
     }
 
     /**
@@ -127,6 +125,8 @@ class BtFourPointThreeServiceProvider extends ServiceProvider
         }, \Config::get('view.paths')), [$sourcePath]), 'btfourpointthree');
 
     }
+
+
 
     /**
      * Register translations.

@@ -9,8 +9,8 @@
     <title>Carousel Template · Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{vh_theme_assets_url("css/bootstrap.css", "btfourpointthree")}}" rel="stylesheet" />
-    <link href="{{vh_theme_assets_url("css/style.css", "btfourpointthree")}}" rel="stylesheet" />
+    <link href="{{vh_theme_assets_url("BtFourPointThree", "css/bootstrap.css")}}" rel="stylesheet" />
+    <link href="{{vh_theme_assets_url("BtFourPointThree", "css/style.css")}}" rel="stylesheet" />
 
     <style>
         .bd-placeholder-img {
