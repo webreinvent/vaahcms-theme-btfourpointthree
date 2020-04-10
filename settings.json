@@ -1,16 +1,19 @@
 {
-  "name": "BtFourPointThree",
-  "slug": "btfourpointthree",
-  "title": "Bootstrap 4.3 Theme",
-  "thumbnail": "http://themepixels.me/dashforge/assets/img/placehold.jpg",
-  "excerpt": "Bootstrap 4.3 Theme for VaahCMS",
-  "description": "Bootstrap 4.3 Theme for VaahCMS",
-  "github_url": "https://github.com/webreinvent/vaahcms-theme-btfourpointthree",
-  "author_name": "WebReinvent",
-  "author_website": "https://www.webreinvent.com",
-  "version": "v0.0.1",
-  "is_sample_data_available": true,
-  "providers": [
-    "VaahCms\\Themes\\BtFourPointThree\\Providers\\BtFourPointThreeServiceProvider"
-  ]
+    "name": "BtFourPointThree",
+    "slug": "btfourpointthree",
+    "type": "theme",
+    "source": "vaahcms",
+    "download_link": "https://github.com/webreinvent/vaahcms-theme-btfourpointthree/archive/master.zip",
+    "title": "Bootstrap 4.3 Theme",
+    "thumbnail": "http://themepixels.me/dashforge/assets/img/placehold.jpg",
+    "excerpt": "Bootstrap 4.3 Theme for VaahCMS",
+    "description": "Bootstrap 4.3 Theme for VaahCMS",
+    "author_name": "WebReinvent",
+    "author_website": "https://www.webreinvent.com",
+    "version": "v0.0.1",
+    "is_sample_data_available": true,
+    "import_sample_data": false,
+    "providers": [
+        "VaahCms\\Themes\\BtFourPointThree\\Providers\\BtFourPointThreeServiceProvider"
+    ]
 }
